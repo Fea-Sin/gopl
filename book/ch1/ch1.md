@@ -101,6 +101,8 @@ Go语言中并没有提供一个set类型，但是map中的key也是不相同的
 seen := make(map[string]int)
 ```
 
+map 的value类型也可以是一个聚合类型类型，比如是一个map或slice，
+
 
 
 

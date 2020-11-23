@@ -6,13 +6,13 @@ Pulished Oct 26, 2015
 
 ### 基础知识
 
-[字符串]()
+[字符串](./book/ch3/ch3.md)
 
 [Slice（切片）](./book/ch2/ch2.md)
 
 [Map](./book/ch1/ch1.md)
 
-[结构体]()
+[结构体](./book/ch4/ch4.md)
 
 [JSON]()
 
