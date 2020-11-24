@@ -18,7 +18,7 @@ Pulished Oct 26, 2015
 
 [文本和HTML模版](./book/ch6/ch6.md)
 
-[函数]()
+[函数](./book/ch7/ch7.md)
 
 [函数进阶]()
 
