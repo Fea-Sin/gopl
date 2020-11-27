@@ -26,7 +26,7 @@ Pulished Oct 26, 2015
 
 [函数进阶2](./book/ch9/ch9.md)
 
-[异常处理]
+[异常处理](./book/ch10/ch10.md)
 
 ### 方法
 
