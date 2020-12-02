@@ -4,11 +4,21 @@ Alan A.A Donovan · Brian W. Kernighan
 
 Pulished Oct 26, 2015
 
+### 基础数据类型
+
+[整型]
+
+[字符串](./book/ch3/ch3.md)
+
 ### 基础知识
 
 [变量](./book/ch8/ch8.md)
 
-[字符串](./book/ch3/ch3.md)
+[类型]
+
+[赋值]
+
+### 复合数据类型
 
 [Slice（切片）](./book/ch2/ch2.md)
 
@@ -19,6 +29,8 @@ Pulished Oct 26, 2015
 [JSON](./book/ch5/ch5.md)
 
 [文本和HTML模版](./book/ch6/ch6.md)
+
+### 函数
 
 [函数](./book/ch7/ch7.md)
 
@@ -34,7 +46,8 @@ Pulished Oct 26, 2015
 
 [方法进阶](./book/ch12/ch12.md)
 
-[封装]
+[封装](./book/ch13/ch13.md)
+
 ### 接口
 
 ### 包和工具
