@@ -52,7 +52,7 @@ Pulished Oct 26, 2015
 
 [接口是合约](./book/ch14/ch14.md)
 
-[接口类型]
+[接口类型](./book/ch14/lesson2.md)
 
 ### 包和工具
 
