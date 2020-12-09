@@ -58,5 +58,9 @@ Pulished Oct 26, 2015
 
 [接口实例](./book/ch14/lesson4.md)
 
+[其他接口](./book/ch14/lesson5.md)
+
+[类型断言](./book/ch15/lesson1.md)
+
 ### 包和工具
 
