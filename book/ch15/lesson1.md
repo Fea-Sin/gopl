@@ -26,3 +26,24 @@ if f, ok := w.(*os.File); ok {
     // ...
 }
 ```
+
+基于类型断言可以区别错误类型
+
+通过类型断言询问行为
+
+fmt.Fprintf函数怎么从其它所有值中区分满足error或者fmt.Stringer接口的值，在
+fmt.Fprintf内部有一个将单个操作对象转换称一个字符串的步骤。
+```
+package fmt
+
+func formatOneValue(x interface{}) string {
+    if err, ok := x.(error); ok {
+        return err.Error()
+    }
+    if str, ok := x.(Stringer); ok {
+        return str.String()
+    }
+}
+```
+如果x满足这两个接口类型中的一个，具体满足的接口决定对值的格式化方式，如果不满足，默认
+case会统一地使用反射来处理所有的其它类型。
