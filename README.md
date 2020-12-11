@@ -4,7 +4,7 @@ Alan A.A Donovan · Brian W. Kernighan
 
 Pulished Oct 26, 2015
 
-### 基础数据类型
+### [基础数据类型](./book/ch3/ch.md)
 
 [整型]
 
