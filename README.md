@@ -62,5 +62,11 @@ Pulished Oct 26, 2015
 
 [类型断言](./book/ch15/lesson1.md)
 
+### [Goroutines和Channels](./book/ch16/ch.md)
+
+[Goroutines](./book/ch16/lesson1.md)
+
+[Channels](./book/ch17/lesson1.md)
+
 ### 包和工具
 
