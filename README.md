@@ -68,5 +68,7 @@ Pulished Oct 26, 2015
 
 [Channels](./book/ch17/lesson1.md)
 
+[并发的循环](./book/ch17/lesson2.md)
+
 ### 包和工具
 
