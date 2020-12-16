@@ -70,7 +70,7 @@ Pulished Oct 26, 2015
 
 [并发的循环](./book/ch17/lesson2.md)
 
-[基于select的多路复用]()
+[基于select的多路复用](./book/ch17/lesson3.md)
 
 ### 包和工具
 
