@@ -48,7 +48,7 @@ channel的零值是nil，nil的channel有时候也是有一些用处的，因为
 channel发送和接收操作会永远阻塞，在select语句中nil的case永远都不会被select
 到。
 
-并发的目录遍历
+### 并发的目录遍历
 
 [实例1](gd.go)
 
@@ -101,7 +101,7 @@ go func() {
 }()
 ```
 
-[实例3]()
+[实例3](gf.go)
 
 
 
