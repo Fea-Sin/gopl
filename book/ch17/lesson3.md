@@ -48,6 +48,61 @@ channel的零值是nil，nil的channel有时候也是有一些用处的，因为
 channel发送和接收操作会永远阻塞，在select语句中nil的case永远都不会被select
 到。
 
+并发的目录遍历
+
+[实例1](gd.go)
+
+[实例2](ge.go)
+
+
+### 并发的退出
+
+有时候我们需要通知goroutine停止它正在干的事情，比如一个正在执行计算的web服务，然而它的客户端
+已经断开和服务端的连接。
+
+Go语言并没有提供在一个goroutine终止另一个goroutine的方法，由于这样会导致goroutine之间的共享
+变量落在未定义的状态上。
+
+我们想要退出两个或者任意多个goroutine怎么办呢？
+
+一种可能的手段是向abort的channel里发送和goroutine数目一样多的事件来退出，如果这些goroutine
+中已经有一些自己退出了，那么会导致我们的channel里的事件数比goroutine还多，这样导致我们的发送
+直接被阻塞。另一方面，如果这些goroutine又生成了其它的goroutine，我们的channel里的数目又
+太少了，所以有些goroutine可能会无法接收到退出的消息。一般情况下我们是很难知道在某一个时刻具体
+有多少个goroutine在运行着的，另外，当一个goroutine从abort channel中接收到一个值的时候，他
+会消费掉这个值，这样其它的goroutine就没法看到这条信息，为了能够达到我们退出goroutine的目的，
+我们需要更靠谱的策略，来通过一个channel把消息广播出去，这样goroutine们能够看到这条事件消息，
+并且在事件完成之后，可以知道这件事情已经发生过了。
+
+我们不向channel发送值，而是用关闭一个channel来进行广播。
+
+我们创建一个退出channel，不需要向这个channel发送任何值，但其所在的闭包内要写明程序需要退出，
+我们同时还定义了一个工具函数cancelled，这个函数在被调用的时候会轮询退出状态。
+```
+var done = make(chan struct{})
+
+func cancelled() bool {
+    select {
+        case <-done:
+            return true
+        default:
+            return false
+    }
+}
+```
+
+下面我们创建一个从标准输入流中读取内容的goroutine，这是一个典型的连接到终端的程序，每当有
+输入被读到（比如用户按了回车键），这个goroutine就会把取消消息通过关闭done的channel广播出去。
+
+```
+go func() {
+    os.Stdin.Read(make([]byte, 1))
+    close(done)
+}()
+```
+
+[实例3]()
+
 
 
 
