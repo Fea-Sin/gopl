@@ -72,5 +72,7 @@ Pulished Oct 26, 2015
 
 [基于select的多路复用](./book/ch17/lesson3.md)
 
+### [基于共享变量的并发](./book/ch18/ch.md)
+
 ### 包和工具
 
