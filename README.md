@@ -74,5 +74,9 @@ Pulished Oct 26, 2015
 
 ### [基于共享变量的并发](./book/ch18/ch.md)
 
+[竞争条件](./book/ch18/lesson1.md)
+
+[sync.Mutex互斥锁](./book/ch18/lesson2.md)
+
 ### 包和工具
 
