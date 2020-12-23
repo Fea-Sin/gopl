@@ -78,7 +78,11 @@ Pulished Oct 26, 2015
 
 [sync.Mutex互斥锁](./book/ch18/lesson2.md)
 
-[sync.RWMutex读写锁]()
+[sync.RWMutex读写锁](./book/ch18/lesson3.md)
+
+[sync.Once惰性初始化](./book/ch18/lesson4.md)
+
+[并发的非阻塞缓存](./book/ch18/lesson5.md)
 
 ### 包和工具
 
