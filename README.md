@@ -86,3 +86,9 @@ Pulished Oct 26, 2015
 
 ### [包和工具](./book/ch19/ch.md)
 
+[包的匿名导入](./book/ch19/lesson1.md)
+
+[工具](./book/ch19/lesson2.md)
+
+### [测试]()
+
