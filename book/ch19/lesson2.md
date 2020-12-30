@@ -108,6 +108,108 @@ $ go build quoteargs.go
 的目录。在Mac系统，golang.org/x/net/html包将被安装到$GOPATH/pkg/darwin_amd64目录下的
 golang.org/x/net/html.a文件。
 
+更多细节，可以参考go/build包的构建约束部分
+```
+$ go doc go/build
+```
+
 ### 包文档
+
+Go语言的编码风格鼓励为每个包提供良好的文档，包中每个导出的成员和包声明前都应该包含目的和用法
+说明注释。
+Go语言中的文档注释一般是完整的句子，第一行通常是摘要说明，以被注释者的名字开头，注释中函数的
+参数或其它的标识符并不需要额外的引号或者其它标记注明。
+```
+// Fprintf formats according to a format specifier and writes to w.
+// It returns the number of bytes written and any write error encountered.
+
+func Fprintf(w io.Writer, format string, a... interface{}) (int, error)
+```
+包注释可以出现在任何一个源文件中，如果包的注释内容比较长，一般会放到一个独立的源文件中，这个
+专门用于保存包文档的源文件通常叫doc.go。
+
+好的文档并不需要面面具到，文档本身应该是简洁但不可忽略的，并且文档也是需要像代码一样维护的。
+
+`go doc`命令打印其后所指定的实体的声明与文档注释，该实体可能是一个包
+```
+$ go doc time
+```
+实体或者是某个具体的包成员
+```
+$ go doc time.Since
+```
+或者是一个方法
+```
+$ go doc time.Duration.Seconds
+```
+该命令并不需要输入完整的包导入路径或正确的大小写。
+
+第二个工具，名字叫[godoc](https://godoc.org/)，它提供了包文档信息，包含了成千上万的开源包的
+检索工具。
+
+### 内部包
+
+在Go语言中，包是最重要的封装机制，没有导出的标识符只在同一个包内部可以访问，而导出的标识符则是
+**面向全宇宙是可见的**。
+
+有时候一个中间状态可能也是有用的，标识符对于一小部分信任的包是可见的，但并不是对所有调用者都可见。
+例如，当我们计划将一个大的包拆分为很多小的更容易维护的子包，但是我们并不想将内部的子包结构也完全
+暴露出去，同时我们可能还希望在内部子包之间共享一些通用的处理包，或者我呢只是想实验一个新包的
+还并不稳定的接口，暂时只暴露给一些受限的用户使用。
+
+为了满足这些要求，Go语言的构建工具对包含internal名字的路径段的包导入路径做了特殊处理。
+这种包加internal包，一个internal包只能被和internal目录有同一个父目录的包所导入。例如
+```
+net/http
+net/http/internal/chunked
+net/http/httputil
+net/url
+```
+net/http/internal/chunked内部包只能被net/http/httputil和net/http包导入，但是不能被
+net/url包导入，不过net/url包却可以导入net/http/httputil包。
+
+### 查询包
+
+`go list`命令可以查询可用包的信息，其最简单的形式，可以测试包是否在工作区并打印它的导入路径
+```
+$ go list github.com/go-sql-driver/mysql
+github.com/go-sql-driver/mysql
+```
+`go list`命令的参数还可以用"..."表示匹配任意的包的导入路径，可以查看特定子目录下的所有包
+```
+$ go list gopl.io/ch3/...
+```
+或者是和某个主题相关的所有的包
+```
+$ go list ...xml...
+```
+
+`go list`命令还可以获取每个包完整的元信息，而不仅仅是导入路径，这写元信息可以以不同格式提供给用户，
+其中`-json`命令行参数表示用JSON格式打印每个包的元信息
+
+命令行参数`-f`则允许用户使用text/template的模版语言定义输出文本的格式。下面命令打印
+compress子目录下所有包的导入包列表
+```
+$ go list -f '{{.ImportPath}} -> {{join .Imports " "}}' compress/...
+
+compress/bzip2 -> bufio io sort
+compress/flate -> bufio fmt io math math/bits sort strconv sync
+compress/gzip -> bufio compress/flate encoding/binary errors fmt hash/crc32 io time
+compress/lzw -> bufio errors fmt io
+compress/zlib -> bufio compress/flate encoding/binary errors fmt hash hash/adler32 io
+```
+
+`go list`命令对于一次性交互查询或自动化构建或测试很有帮助，每个子命令的更多
+信息，包括可设置的字段和意义，可以用`go help list`查看。
+
+
+
+
+
+
+
+
+
+
 
 
