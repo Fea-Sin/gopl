@@ -6,7 +6,7 @@ Pulished Oct 26, 2015
 
 ### [基础数据类型](./book/ch3/ch.md)
 
-[整型]
+[整型todo](./book/ch3/lesson1.md)
 
 [字符串](./book/ch3/ch3.md)
 
@@ -14,9 +14,9 @@ Pulished Oct 26, 2015
 
 [变量](./book/ch8/ch8.md)
 
-[类型]
+[类型todo](./book/ch3/lesson1.md)
 
-[赋值]
+[赋值todo](./book/ch3/lesson1.md)
 
 ### 复合数据类型
 
