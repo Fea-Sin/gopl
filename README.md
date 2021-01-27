@@ -92,7 +92,4 @@ Pulished Oct 26, 2015
 
 ### [测试](./book/ch20/ch.md)
 
-[测试函数](./book/ch20/lesson1.md)
-
-[测试覆盖率](./book/ch20/lesson2.md)
 
